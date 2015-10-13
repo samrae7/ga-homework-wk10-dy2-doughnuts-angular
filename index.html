@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="doughnutsApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Doughnuts</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/doughnutsController.js" charset="utf-8"></script>
+</head>
+<body ng-controller="DoughnutsController as doughnuts">
+  <h1>Doughnuts</h1>
+
+   <ul>
+    <li ng-repeat="doughnut in doughnuts.all track by $index">
+       <strong>{{doughnut.style}}</strong> <em>{{doughnut.flavor}}</em>
+      <form ng-submit="doughnuts.removeDoughnut($index+1)">
+        <input type="submit" value="Delete">
+      </form>
+    </li>
+  </ul>
+
+  <form ng-submit="doughnuts.addDoughnut()">
+    <input type="text" ng-model="doughnuts.newDoughnut.style">
+    <input type="text" ng-model="doughnuts.newDoughnut.flavor">
+    <input type="submit" value="Add doughnut">
+  </form>
+
+  
+</body>
+</html>
